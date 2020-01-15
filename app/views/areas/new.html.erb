@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-4">
+
+  </div>
+  <div class="col-5">
+    <div class="card index">
+      <h1 class="text-center">Nueva Area</h1>
+      <hr>
+      <div class="container">
+          <%= render 'form', area: @area %>
+      </div>
+      <hr>
+      <div class="container">
+        <hd><%= link_to 'Salir', areas_path, class:'btn btn-dark' %>
+      </div>
+    </div>
+  </div>
+</div>

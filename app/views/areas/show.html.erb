@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-4">
+
+  </div>
+  <div class="col-5">
+    <div class="card index">
+      <h1 class="text-center">Nombre de area:</h1>
+      <div class="container">
+        <h1><%= @area.name %></h1>
+
+        <hd><%= link_to 'Editar area', edit_area_path(@area), class:'btn btn-dark' %>
+        <hd><%= link_to 'Salir', areas_path, class:'btn btn-dark' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-4">
+
+  </div>
+  <div class="col-5">
+    <div class="card index">
+      <h1 class="text-center">Nombre compañia: <%= @company.name %></h1>
+      <hr>
+      <div class="container">
+        <h1>Ingreso de empleado</h1>
+
+        <%= form_with(model: [ @company, @employee ]) do |form| %>
+          <%= form.label :first_name, "Nombre:" %>
+          <%= form.text_field :first_name %>
+          <br>
+          <%= form.label :last_name, "Apellido:" %>
+          <%= form.text_field :last_name %>
+          <br>
+          <%= form.label :email, "Email:" %>
+          <%= form.text_field :email %>
+          <br>
+          <%= form.label :area_id, "Area:" %>
+          <%= form.select :area_id, Area.pluck(:name, :id) %>
+          <br>
+          <%= form.submit "Crear", class:'btn btn-dark' %>
+        <% end %>
+      </div>
+
+
+      <div class="card p-3">
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Area</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @company.employees.each do |e| %>
+                <tr>
+                  <td><%= e.first_name %></td>
+                  <td><%= e.last_name %></td>
+                  <td><%= e.email %></td>
+                  <td><%= e.area.name %></td>
+                  <td><%= link_to "Eliminar", company_employees_path(@company, e), method: :delete, data: { :confirm => "¿Desea Eliminar?"}, :class => "btn btn-dark" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="container">
+          <hd><%= link_to 'Editar compañia', edit_company_path(@company), class:'btn btn-dark' %>
+          <hd><%= link_to 'Salir', companies_path, class:'btn btn-dark' %>
+        </div>
+
+    </div>
+  </div>
+</div>
